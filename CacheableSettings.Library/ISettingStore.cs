@@ -7,18 +7,20 @@ namespace CacheableSettings.Library
     public interface ISettingStore
     {
         /// <summary>
-        /// Time to live (seconds)
-        /// <para>Default value is 60 seconds</para>
-        /// </summary>
-        public int TTL { get; set; }
-
-        /// <summary>
         /// Get stored item in memory or create it
         /// </summary>
-        /// <param name="key"></param>
-        /// <param name="createItem"></param>
+        /// <param name="key">Key</param>
+        /// <param name="createItem">Your desired function</param>
+        /// <param name="ttl">Time to live in seconds - 0 means unlimited</param>
         /// <returns></returns>
-        Task<string?> GetOrCreate_Async(string key, Func<string> createItem);
+        Task<string?> GetOrCreate_Async(string key, Func<string> createItem, int ttl = 0);
+
+        /// <summary>
+        /// Get an item from cache
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        Task<string?> Get_Async(string key);
 
         /// <summary>
         /// Store all setting items in memory

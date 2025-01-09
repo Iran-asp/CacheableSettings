@@ -5,7 +5,7 @@ namespace CacheableSettings.ConsoleApp
 {
     internal class Program
     {
-        static async void Main(string[] args)
+        static async Task Main(string[] args)
         {
             var cacheService = new ServiceCollection()
                 .AddSingleton<ISettingStore, SettingStore>()
@@ -20,12 +20,15 @@ namespace CacheableSettings.ConsoleApp
                 {"item2", "20"}
             };
 
-            service.TTL = 120;
             service.Store(settings);
 
-            var value = await service.GetOrCreate_Async("item1", () => "");
+            var value = await service.Get_Async("item1");
+            var value2 = await service.GetOrCreate_Async("key1", () => "new data");
+            var value3 = await service.GetOrCreate_Async("key2", () => "new data 2", 120);
 
             Console.WriteLine(value);
+            Console.WriteLine(value2);
+            Console.WriteLine(value3);
             Console.ReadLine();
 
         }
