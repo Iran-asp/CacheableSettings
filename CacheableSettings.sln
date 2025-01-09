@@ -5,6 +5,8 @@ VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CacheableSettings.Library", "CacheableSettings.Library\CacheableSettings.Library.csproj", "{C309CAE0-41F3-4FDE-8059-AC9B3DC9D67C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CacheableSettings.ConsoleApp", "CacheableSettings.Console\CacheableSettings.ConsoleApp.csproj", "{08CF61B3-6D8D-4DA5-B762-2FB9CAAB6AF7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C309CAE0-41F3-4FDE-8059-AC9B3DC9D67C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C309CAE0-41F3-4FDE-8059-AC9B3DC9D67C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C309CAE0-41F3-4FDE-8059-AC9B3DC9D67C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08CF61B3-6D8D-4DA5-B762-2FB9CAAB6AF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08CF61B3-6D8D-4DA5-B762-2FB9CAAB6AF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08CF61B3-6D8D-4DA5-B762-2FB9CAAB6AF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08CF61B3-6D8D-4DA5-B762-2FB9CAAB6AF7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
