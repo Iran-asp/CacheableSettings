@@ -13,7 +13,6 @@ namespace CacheableSettings.Library
         private readonly IMemoryCache _memoryCache;
 
         public int TTL { get; set; }
-        public Dictionary<string, string>? SettingItems { get; set; }
 
         public SettingStore(IMemoryCache memoryCache)
         {
@@ -21,7 +20,7 @@ namespace CacheableSettings.Library
             TTL = 60;
         }
 
-        public virtual Task<string?> GetOrCreate(string key, Func<string> createItem)
+        public virtual Task<string?> GetOrCreate_Async(string key, Func<string> createItem)
         {
             if (!_memoryCache.TryGetValue(key, out string? cachedValue))
             {

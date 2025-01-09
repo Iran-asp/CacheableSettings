@@ -13,17 +13,12 @@ namespace CacheableSettings.Library
         public int TTL { get; set; }
 
         /// <summary>
-        /// Setting collection
-        /// </summary>
-        public Dictionary<string, string>? SettingItems { get; set; }
-
-        /// <summary>
         /// Get stored item in memory or create it
         /// </summary>
         /// <param name="key"></param>
         /// <param name="createItem"></param>
         /// <returns></returns>
-        Task<string?> GetOrCreate(string key, Func<string> createItem);
+        Task<string?> GetOrCreate_Async(string key, Func<string> createItem);
 
         /// <summary>
         /// Store all setting items in memory
