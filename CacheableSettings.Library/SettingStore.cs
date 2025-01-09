@@ -12,27 +12,36 @@ namespace CacheableSettings.Library
     {
         private readonly IMemoryCache _memoryCache;
 
-        public int TTL { get; set; }
-
         public SettingStore(IMemoryCache memoryCache)
         {
             this._memoryCache = memoryCache;
-            TTL = 60;
         }
 
-        public virtual Task<string?> GetOrCreate_Async(string key, Func<string> createItem)
+        public virtual Task<string?> GetOrCreate_Async(string key, Func<string> createItem, int ttl = 0)
         {
             if (!_memoryCache.TryGetValue(key, out string? cachedValue))
             {
                 cachedValue = createItem();
 
-                var option = new MemoryCacheEntryOptions()
-                    .SetAbsoluteExpiration(TimeSpan.FromSeconds(TTL));
-
-                _memoryCache.Set(key, cachedValue, option);
+                if (ttl == 0)
+                {
+                    _memoryCache.Set(key, cachedValue);
+                }
+                else
+                {
+                    var option = new MemoryCacheEntryOptions()
+                        .SetAbsoluteExpiration(TimeSpan.FromSeconds(ttl));
+                    _memoryCache.Set(key, cachedValue, option);
+                }
             }
 
             return Task.FromResult(cachedValue);
+        }
+
+        public Task<string?> Get_Async(string key)
+        {
+            _memoryCache.TryGetValue(key, out string? value);
+            return Task.FromResult(value);
         }
 
         public void Store(Dictionary<string, string> items)
