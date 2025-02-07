@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Threading.Tasks;
 
 namespace CacheableSettings.Library
@@ -75,6 +76,26 @@ namespace CacheableSettings.Library
                 _memoryCache.Set(item.Key, item.Value);
                 KEYS.Add(item.Key);
             }
+        }
+
+        /// <summary>
+        /// Get all data that saved in cache
+        /// </summary>
+        /// <returns></returns>
+        public async Task<Dictionary<string, string?>> GetAll()
+        {
+            if (KEYS.Count == 0)
+            {
+                return new Dictionary<string, string?>();
+            }
+
+            var data = new Dictionary<string, string?>();
+            foreach (var item in KEYS)
+            {
+                data.Add(item, await Get_Async(item));
+            }
+
+            return data;
         }
     }
 }
