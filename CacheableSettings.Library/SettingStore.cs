@@ -12,9 +12,15 @@ namespace CacheableSettings.Library
     {
         private readonly IMemoryCache _memoryCache;
 
+        /// <summary>
+        /// List of keys that used on STORE method
+        /// </summary>
+        public ICollection<string> KEYS { get; private set; }
+
         public SettingStore(IMemoryCache memoryCache)
         {
             this._memoryCache = memoryCache;
+            KEYS = new List<string>();
         }
 
         /// <summary>
@@ -62,10 +68,12 @@ namespace CacheableSettings.Library
         /// <returns></returns>
         public virtual void Store(Dictionary<string, string> items)
         {
+            KEYS.Clear();
             foreach (var item in items)
             {
                 _memoryCache.Remove(item.Key);
                 _memoryCache.Set(item.Key, item.Value);
+                KEYS.Add(item.Key);
             }
         }
     }
