@@ -23,6 +23,7 @@ namespace CacheableSettings.ConsoleApp
             service.Store(settings);
 
             var myKeys = service.KEYS;
+            var allData = await service.GetAll();
 
             var value = await service.Get_Async("item1");
             var value2 = await service.GetOrCreate_Async("key1", () => "new data");

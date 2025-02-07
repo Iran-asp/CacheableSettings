@@ -33,5 +33,11 @@ namespace CacheableSettings.Library
         /// <param name="items"></param>
         /// <returns></returns>
         void Store(Dictionary<string, string> items);
+
+        /// <summary>
+        /// Get all data that saved in cache
+        /// </summary>
+        /// <returns></returns>
+        Task<Dictionary<string, string?>> GetAll();
     }
 }
