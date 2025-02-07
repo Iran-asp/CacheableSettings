@@ -8,7 +8,7 @@
     <Title>CacheableSettings</Title>
     <Authors>Mohammad Shadman</Authors>
     <Description>A simple cacheable setting</Description>
-    <Version>1.1.7</Version>
+    <Version>1.1.8</Version>
     <PackageProjectUrl></PackageProjectUrl>
     <RepositoryUrl>https://github.com/Iran-asp/CacheableSettings</RepositoryUrl>
     <PackageTags>setting,cache,management</PackageTags>
