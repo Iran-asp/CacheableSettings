@@ -7,6 +7,11 @@ namespace CacheableSettings.Library
     public interface ISettingStore
     {
         /// <summary>
+        /// List of keys that used on STORE method
+        /// </summary>
+        public ICollection<string> KEYS { get; }
+
+        /// <summary>
         /// Get stored item in memory or create it
         /// </summary>
         /// <param name="key">Key</param>
